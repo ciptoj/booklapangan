@@ -13,7 +13,7 @@ class BookFieldRequest{
 }
 const app = express()
 app.all('/', async (req:any, res:any) => {
-    var nextDay = moment().add(1, 'days').format('YYYY-MM-DD');
+    var nextDay = moment().format('YYYY-MM-DD');
     //console.log('Mencoba Booking di:'+nextDay);
     var responses = [];
     try{
