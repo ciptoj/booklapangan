@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "npx tsc && node dist/index.js",
+    "build":"tsc",
+    "start": "node dist/index.js",
     "eslint:fix": "eslint --fix"
   },
   "devDependencies": {
