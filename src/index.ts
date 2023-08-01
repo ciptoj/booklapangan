@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import express from 'express';
 
 class BookFieldRequest{
@@ -13,7 +13,8 @@ class BookFieldRequest{
 }
 const app = express()
 app.all('/', async (req:any, res:any) => {
-    var nextDay = moment().format('YYYY-MM-DD');
+ 
+    var nextDay = moment().tz('Asia/Jakarta').format('YYYY-MM-DD');
     //console.log('Mencoba Booking di:'+nextDay);
     var responses = [];
     try{
@@ -94,6 +95,7 @@ app.listen(port,() => {
 // });
 
 function bookField(jsonData:BookFieldRequest){
+  var serverTimeZone = moment.tz.guess();
   return new Promise((resolve,reject)=>{
     var config = {
       method: 'post',
@@ -110,15 +112,15 @@ function bookField(jsonData:BookFieldRequest){
       var data = response.data;
   
       if(data.status=="0"){
-        reject({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:0,message:"gagal booking, error: "+data.error});
+        reject({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:0,message:"gagal booking, error: "+data.error,serverTimeZone:serverTimeZone});
 
       }else if(data.status=="1"){
-        resolve({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:1,message:"sukses"});
+        resolve({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:1,message:"sukses",serverTimeZone:serverTimeZone});
       }
     })
     .catch(function (error:any) {
       console.log(error);
-      reject({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:0,message:"error : "+error.message});
+      reject({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:0,message:"error : "+error.message,serverTimeZone:serverTimeZone});
      
     });
   });
