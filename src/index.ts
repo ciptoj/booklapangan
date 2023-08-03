@@ -13,13 +13,72 @@ class BookFieldRequest{
 }
 const app = express()
 app.all('/', async (req:any, res:any) => {
- 
-    var nextDay = moment().tz('Asia/Jakarta').format('YYYY-MM-DD');
-    //console.log('Mencoba Booking di:'+nextDay);
     var responses = [];
+    var today = moment().tz('Asia/Jakarta').format('YYYY-MM-DD');
+    //today
     try{
       var response = await bookField({
-        "id": 8,
+        "id": 4,
+        "jam_booking": 17,
+        "lapangan": 8,
+        "membership_id": "TM52050",
+        "tanggal_booking": today,
+        "tanggal_lahir": "20/03/1982"
+      });
+      responses.push(response);
+    }catch(e){
+      responses.push(e);
+    }
+    try{
+      response = await bookField({
+        "id": 4,
+        "jam_booking": 18,
+        "lapangan": 8,
+        "membership_id": "TM51912",
+        "tanggal_booking": today,
+        "tanggal_lahir": "26/07/1984"
+      });
+      responses.push(response);
+    }catch(e){
+      responses.push(e);
+    }
+    try{
+      response = await bookField({
+        "id": 4,
+        "jam_booking": 19,
+        "lapangan": 8,
+        "membership_id": "TM52199",
+        "tanggal_booking": today,
+        "tanggal_lahir": "03/04/1996"
+      });
+      responses.push(response);
+    }catch(e){
+      responses.push(e);
+    }
+    try{
+      response = await bookField({
+        "id": 4,
+        "jam_booking": 20,
+        "lapangan": 8,
+        "membership_id": "TM51780",
+        "tanggal_booking": today,
+        "tanggal_lahir": "16/03/1971"
+      });
+    responses.push(response);
+    }catch(e){
+      responses.push(e);
+    }
+
+
+
+
+    var nextDay = moment().tz('Asia/Jakarta').add(1, 'days').format('YYYY-MM-DD');
+ 
+    //nextday
+
+    try{
+      var response = await bookField({
+        "id": 4,
         "jam_booking": 17,
         "lapangan": 8,
         "membership_id": "TM52050",
@@ -32,7 +91,7 @@ app.all('/', async (req:any, res:any) => {
     }
     try{
       response = await bookField({
-        "id": 8,
+        "id": 4,
         "jam_booking": 18,
         "lapangan": 8,
         "membership_id": "TM51912",
@@ -45,7 +104,7 @@ app.all('/', async (req:any, res:any) => {
     }
     try{
       response = await bookField({
-        "id": 8,
+        "id": 4,
         "jam_booking": 19,
         "lapangan": 8,
         "membership_id": "TM52199",
@@ -58,7 +117,7 @@ app.all('/', async (req:any, res:any) => {
     }
     try{
       response = await bookField({
-        "id": 8,
+        "id": 4,
         "jam_booking": 20,
         "lapangan": 8,
         "membership_id": "TM51780",
@@ -69,6 +128,9 @@ app.all('/', async (req:any, res:any) => {
     }catch(e){
       responses.push(e);
     }
+
+
+
     res.send(responses);
 })
 const port = process.env.PORT || 3000; 
@@ -101,7 +163,8 @@ function bookField(jsonData:BookFieldRequest){
       method: 'post',
       url: 'https://www.thespringsclubserpong.com/booking/submit-booking',
       headers: { 
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Origin':'https://www.thespringsclubserpong.com'
       },
       data : JSON.stringify(jsonData)
     };
@@ -112,10 +175,10 @@ function bookField(jsonData:BookFieldRequest){
       var data = response.data;
   
       if(data.status=="0"){
-        reject({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:0,message:"gagal booking, error: "+data.error,serverTimeZone:serverTimeZone});
+        reject({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:0,message:"gagal booking, error: "+data.error});
 
       }else if(data.status=="1"){
-        resolve({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:1,message:"sukses",serverTimeZone:serverTimeZone});
+        resolve({tanggal:tanggal,jam:theHour,lapangan:jsonData.lapangan,status:1,message:"sukses"});
       }
     })
     .catch(function (error:any) {
