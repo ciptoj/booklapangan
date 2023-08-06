@@ -14,60 +14,60 @@ class BookFieldRequest{
 const app = express()
 app.all('/', async (req:any, res:any) => {
     var responses = [];
-    var today = moment().tz('Asia/Jakarta').format('YYYY-MM-DD');
+    // var today = moment().tz('Asia/Jakarta').format('YYYY-MM-DD');
     //today
-    try{
-      var response = await bookField({
-        "id": 8,
-        "jam_booking": 17,
-        "lapangan": 8,
-        "membership_id": "TM52050",
-        "tanggal_booking": today,
-        "tanggal_lahir": "20/03/1982"
-      });
-      responses.push(response);
-    }catch(e){
-      responses.push(e);
-    }
-    try{
-      response = await bookField({
-        "id": 8,
-        "jam_booking": 18,
-        "lapangan": 8,
-        "membership_id": "TM51912",
-        "tanggal_booking": today,
-        "tanggal_lahir": "26/07/1984"
-      });
-      responses.push(response);
-    }catch(e){
-      responses.push(e);
-    }
-    try{
-      response = await bookField({
-        "id": 8,
-        "jam_booking": 19,
-        "lapangan": 8,
-        "membership_id": "TM52199",
-        "tanggal_booking": today,
-        "tanggal_lahir": "03/04/1996"
-      });
-      responses.push(response);
-    }catch(e){
-      responses.push(e);
-    }
-    try{
-      response = await bookField({
-        "id": 8,
-        "jam_booking": 20,
-        "lapangan": 8,
-        "membership_id": "TM51780",
-        "tanggal_booking": today,
-        "tanggal_lahir": "16/03/1971"
-      });
-    responses.push(response);
-    }catch(e){
-      responses.push(e);
-    }
+    // try{
+    //   var response = await bookField({
+    //     "id": 8,
+    //     "jam_booking": 17,
+    //     "lapangan": 8,
+    //     "membership_id": "TM52050",
+    //     "tanggal_booking": today,
+    //     "tanggal_lahir": "20/03/1982"
+    //   });
+    //   responses.push(response);
+    // }catch(e){
+    //   responses.push(e);
+    // }
+    // try{
+    //   response = await bookField({
+    //     "id": 8,
+    //     "jam_booking": 18,
+    //     "lapangan": 8,
+    //     "membership_id": "TM51912",
+    //     "tanggal_booking": today,
+    //     "tanggal_lahir": "26/07/1984"
+    //   });
+    //   responses.push(response);
+    // }catch(e){
+    //   responses.push(e);
+    // }
+    // try{
+    //   response = await bookField({
+    //     "id": 8,
+    //     "jam_booking": 19,
+    //     "lapangan": 8,
+    //     "membership_id": "TM52199",
+    //     "tanggal_booking": today,
+    //     "tanggal_lahir": "03/04/1996"
+    //   });
+    //   responses.push(response);
+    // }catch(e){
+    //   responses.push(e);
+    // }
+    // try{
+    //   response = await bookField({
+    //     "id": 8,
+    //     "jam_booking": 20,
+    //     "lapangan": 8,
+    //     "membership_id": "TM51780",
+    //     "tanggal_booking": today,
+    //     "tanggal_lahir": "16/03/1971"
+    //   });
+    // responses.push(response);
+    // }catch(e){
+    //   responses.push(e);
+    // }
 
 
 
