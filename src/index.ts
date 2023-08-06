@@ -18,7 +18,7 @@ app.all('/', async (req:any, res:any) => {
     //today
     try{
       var response = await bookField({
-        "id": 4,
+        "id": 8,
         "jam_booking": 17,
         "lapangan": 8,
         "membership_id": "TM52050",
@@ -31,7 +31,7 @@ app.all('/', async (req:any, res:any) => {
     }
     try{
       response = await bookField({
-        "id": 4,
+        "id": 8,
         "jam_booking": 18,
         "lapangan": 8,
         "membership_id": "TM51912",
@@ -44,7 +44,7 @@ app.all('/', async (req:any, res:any) => {
     }
     try{
       response = await bookField({
-        "id": 4,
+        "id": 8,
         "jam_booking": 19,
         "lapangan": 8,
         "membership_id": "TM52199",
@@ -57,7 +57,7 @@ app.all('/', async (req:any, res:any) => {
     }
     try{
       response = await bookField({
-        "id": 4,
+        "id": 8,
         "jam_booking": 20,
         "lapangan": 8,
         "membership_id": "TM51780",
@@ -78,7 +78,7 @@ app.all('/', async (req:any, res:any) => {
 
     try{
       var response = await bookField({
-        "id": 4,
+        "id": 8,
         "jam_booking": 17,
         "lapangan": 8,
         "membership_id": "TM52050",
@@ -91,7 +91,7 @@ app.all('/', async (req:any, res:any) => {
     }
     try{
       response = await bookField({
-        "id": 4,
+        "id": 8,
         "jam_booking": 18,
         "lapangan": 8,
         "membership_id": "TM51912",
@@ -104,7 +104,7 @@ app.all('/', async (req:any, res:any) => {
     }
     try{
       response = await bookField({
-        "id": 4,
+        "id": 8,
         "jam_booking": 19,
         "lapangan": 8,
         "membership_id": "TM52199",
@@ -117,7 +117,7 @@ app.all('/', async (req:any, res:any) => {
     }
     try{
       response = await bookField({
-        "id": 4,
+        "id": 8,
         "jam_booking": 20,
         "lapangan": 8,
         "membership_id": "TM51780",
